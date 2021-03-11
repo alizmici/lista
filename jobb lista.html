@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tennivalok listaja</title>
+            <script>
+                function elemHozzaadas() {
+                    var ujElem = document.createElement("div");
+                    ujElem.innerHTML = document.getElementById("szoveg").value;
+                    document.getElementById("lista").appendChild(ujElem);
+                    ujElem.onclick=elemTorles
+                    elmentes()
+                }
+                function elemTorles() {
+                    document.getElementById("lista").removeChild(this)
+                    elmentes()
+                }
+                function elmentes() {
+                    localStorage.mentes = document.getElementById("lista").innerHTML
+                }
+                function betoltes() {
+                    document.getElementById("lista").innerHTML = localStorage.mentes;
+                    for(var i = 0; i < lista.children.length; i++) {
+                        lista.children[i].onclick = elemTorles;
+                    }
+                }
+            </script>
+            <style>
+                body {
+                    background-color: blueviolet;
+                }
+            </style>
+    </head>
+    <body>
+        <div style="float: center; font-size: 70px; margin-left: 400px;  margin-right: 400px; background-color: black; color: pink">
+            Tennivalok listaja</div>
+        <input type="text" id="szoveg">
+        <input type="button" value="ELEM HOZZAADASA" onclick="elemHozzaadas();" style="background-color: pink;">
+        <div id="lista" style="background-image: url('vill.png'); height: 1000px;">
+        </div>
+        
+        <script>
+            if(localStorage.mentes) {
+                betoltes();
+            }
+        </script>
+    </body>
+</html>
